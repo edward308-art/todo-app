@@ -1,0 +1,758 @@
+/* ---------- 기본 ---------- */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", sans-serif;
+    background: #eef1f6;
+    color: #1f2937;
+    margin: 0;
+    padding: 2.5rem 2rem;
+    min-height: 100vh;
+}
+
+.app {
+    max-width: 1180px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 2rem 2.25rem 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
+}
+
+/* ---------- 헤더 ---------- */
+
+.app-header {
+    border-bottom: 1px solid #eef0f4;
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.75rem;
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.app-subtitle {
+    margin: 0.4rem 0 0;
+    color: #6b7280;
+    font-size: 0.95rem;
+}
+
+/* ---------- 2단 레이아웃 ---------- */
+
+.layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: sticky;
+    top: 2rem;
+}
+
+.section-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6b7280;
+    margin: 0 0 0.75rem;
+}
+
+/* ---------- 진행률 / 통계 ---------- */
+
+.progress-section {
+    background: #f8fafc;
+    border: 1px solid #eef0f4;
+    border-radius: 12px;
+    padding: 1.1rem 1.1rem 1.25rem;
+}
+
+.progress-bar {
+    background: #e5e7eb;
+    border-radius: 999px;
+    height: 8px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    background: linear-gradient(90deg, #3b82f6, #2563eb);
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    margin: 0.6rem 0 0;
+    font-size: 0.85rem;
+    color: #4b5563;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #eef0f4;
+    border-radius: 8px;
+    padding: 0.6rem 0.25rem;
+}
+
+.stat-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.1;
+}
+
+.stat-label {
+    font-size: 0.72rem;
+    color: #6b7280;
+    margin-top: 0.2rem;
+}
+
+/* ---------- 필터 (사이드바) ---------- */
+
+.filter-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.filter-button {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+    text-align: left;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid transparent;
+    background: transparent;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #374151;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.filter-button:hover {
+    background: #f3f4f6;
+}
+
+.filter-button.active {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border-color: #bfdbfe;
+    font-weight: 600;
+}
+
+.filter-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.dot-all { background: #9ca3af; }
+.dot-work { background: #3b82f6; }
+.dot-personal { background: #10b981; }
+.dot-study { background: #f59e0b; }
+
+.filter-name {
+    flex: 1;
+}
+
+.filter-count {
+    font-size: 0.8rem;
+    color: #6b7280;
+    background: #f3f4f6;
+    padding: 0.1rem 0.55rem;
+    border-radius: 999px;
+    min-width: 28px;
+    text-align: center;
+}
+
+.filter-button.active .filter-count {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+/* ---------- 메인 ---------- */
+
+.main {
+    min-width: 0;
+}
+
+/* ---------- 입력 / 공통 폼 ---------- */
+
+input[type="text"],
+select,
+button {
+    padding: 0.65rem 0.9rem;
+    font-size: 0.95rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #fff;
+    font-family: inherit;
+    color: #1f2937;
+}
+
+input[type="text"]:focus,
+select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+button {
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.05s ease;
+}
+
+button:hover {
+    background: #f9fafb;
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+.input-section {
+    margin-bottom: 1.5rem;
+}
+
+.input-form {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* ---------- 입력 에러 상태 ---------- */
+
+.input-error,
+input.input-error[type="text"],
+.edit-input.input-error {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+    animation: input-error-shake 0.25s ease;
+}
+
+@keyframes input-error-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    75% { transform: translateX(3px); }
+}
+
+.input-section input[type="text"],
+.input-form input[type="text"] {
+    flex: 1;
+    min-width: 260px;
+    padding: 0.75rem 1rem;
+}
+
+.input-section select,
+.input-form select {
+    min-width: 110px;
+}
+
+#add-button {
+    background: #2563eb;
+    color: #fff;
+    border-color: #2563eb;
+    padding: 0.75rem 1.4rem;
+    font-weight: 600;
+}
+
+#add-button:hover {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+.auto-hint {
+    flex: 1 1 100%;
+    margin: 0;
+    font-size: 0.85rem;
+    color: #2563eb;
+}
+
+/* ---------- 리스트 ---------- */
+
+.list-section {
+    background: #fff;
+    border: 1px solid #eef0f4;
+    border-radius: 12px;
+    padding: 0.5rem 1.25rem 1rem;
+}
+
+.list-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 0.9rem 0 0.6rem;
+    border-bottom: 1px solid #eef0f4;
+}
+
+.list-title {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.list-meta {
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+#todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 0.25rem;
+    border-bottom: 1px solid #f3f4f6;
+    transition: background 0.15s;
+}
+
+.todo-item:last-child {
+    border-bottom: none;
+}
+
+.todo-item:hover {
+    background: #fafbfc;
+}
+
+/* ----- 체크박스: 커스텀 디자인 (UX #3) -----
+   기본 checkbox보다 명확한 시각 디자인 + 완료 시 만족감 있는 transition */
+.todo-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    flex-shrink: 0;
+    border: 2px solid #cbd5e1;
+    border-radius: 6px;
+    background: #fff;
+    position: relative;
+    transition: background 0.18s ease, border-color 0.18s ease, transform 0.12s ease;
+}
+
+.todo-item input[type="checkbox"]:hover {
+    border-color: #2563eb;
+}
+
+.todo-item input[type="checkbox"]:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+.todo-item input[type="checkbox"]:checked {
+    background: #2563eb;
+    border-color: #2563eb;
+}
+
+.todo-item input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 6px;
+    height: 11px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    animation: checkmark-pop 0.28s cubic-bezier(0.2, 1.4, 0.5, 1);
+}
+
+@keyframes checkmark-pop {
+    0% { transform: rotate(45deg) scale(0); opacity: 0; }
+    60% { transform: rotate(45deg) scale(1.25); opacity: 1; }
+    100% { transform: rotate(45deg) scale(1); opacity: 1; }
+}
+
+/* 완료 항목 행 전체에 살짝 톤 다운 + 좌측 강조 바 */
+.todo-item.is-completed {
+    background: #fafbfc;
+}
+
+.todo-item.is-completed .category-label {
+    opacity: 0.55;
+}
+
+/* 완료 체크 순간 살짝 통통 튀는 행 피드백 */
+.todo-item.just-completed {
+    animation: row-celebrate 0.45s ease;
+}
+
+@keyframes row-celebrate {
+    0% { background: #fff; }
+    40% { background: #ecfdf5; }
+    100% { background: #fafbfc; }
+}
+
+.category-label {
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.category-work {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.category-personal {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.category-study {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.todo-text {
+    flex: 1;
+    word-break: break-word;
+    min-width: 0;
+    font-size: 0.98rem;
+}
+
+.todo-text.completed {
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    text-decoration-color: rgba(156, 163, 175, 0.7);
+    color: #9ca3af;
+    transition: color 0.2s ease;
+}
+
+.edit-button,
+.delete-button {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.85rem;
+    min-height: 36px;
+}
+
+.delete-button {
+    color: #6b7280;
+}
+
+.edit-button:hover {
+    background: #eff6ff;
+    border-color: #3b82f6;
+    color: #1d4ed8;
+}
+
+.delete-button:hover {
+    background: #fef2f2;
+    border-color: #ef4444;
+    color: #dc2626;
+}
+
+/* ---------- 인라인 편집 ---------- */
+
+.todo-item.editing {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    background: #f9fafb;
+}
+
+.edit-input {
+    flex: 1;
+    min-width: 0;
+}
+
+/* ---------- 빈 상태 (UX #4) ----------
+   카테고리별 일러스트(이모지) + 메인 메시지 + 보조 텍스트의 3단 구성 */
+
+.empty-state {
+    text-align: center;
+    color: #9ca3af;
+    padding: 3rem 1rem 3.25rem;
+    font-size: 0.95rem;
+    border-bottom: none !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.empty-state:hover {
+    background: transparent !important;
+}
+
+.empty-illustration {
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+    /* 살짝 부유하는 듯한 잔잔한 애니메이션으로 친근함 부여 */
+    animation: empty-float 3s ease-in-out infinite;
+}
+
+.empty-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #4b5563;
+    margin: 0;
+}
+
+.empty-subtext {
+    font-size: 0.88rem;
+    color: #9ca3af;
+    margin: 0;
+}
+
+@keyframes empty-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+}
+
+/* 모션 민감 사용자 배려 (접근성) */
+@media (prefers-reduced-motion: reduce) {
+    .empty-illustration { animation: none; }
+}
+
+/* ---------- 새 항목 등장 애니메이션 (UX #2) ---------- */
+.todo-item.just-added {
+    animation: item-slide-in 0.32s cubic-bezier(0.2, 0.9, 0.4, 1);
+}
+
+@keyframes item-slide-in {
+    0%   { opacity: 0; transform: translateY(-8px); background: #eff6ff; }
+    100% { opacity: 1; transform: translateY(0);    background: transparent; }
+}
+
+/* 추가 버튼 클릭 시 짧은 펄스 피드백 */
+#add-button.is-pulsing {
+    animation: button-pulse 0.4s ease;
+}
+
+@keyframes button-pulse {
+    0%   { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5); }
+    50%  { transform: scale(1.04); box-shadow: 0 0 0 8px rgba(37, 99, 235, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .todo-item.just-added,
+    .todo-item.just-completed,
+    #add-button.is-pulsing,
+    .toast { animation: none !important; }
+}
+
+/* ---------- 토스트 / Undo (UX #1) ---------- */
+
+.toast-container {
+    position: fixed;
+    left: 50%;
+    bottom: 1.5rem;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    pointer-events: none; /* 컨테이너 자체는 클릭 통과, 각 토스트는 개별로 활성화 */
+}
+
+.toast {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    background: #111827;
+    color: #f9fafb;
+    padding: 0.7rem 0.9rem 0.7rem 1rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.25);
+    font-size: 0.9rem;
+    min-width: 280px;
+    max-width: min(420px, calc(100vw - 2rem));
+    animation: toast-in 0.22s ease;
+}
+
+.toast.is-leaving {
+    animation: toast-out 0.18s ease forwards;
+}
+
+.toast-message {
+    flex: 1;
+}
+
+.toast-action {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #93c5fd;
+    font-weight: 600;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    min-height: 36px;
+}
+
+.toast-action:hover {
+    background: rgba(147, 197, 253, 0.12);
+    color: #bfdbfe;
+    border-color: rgba(147, 197, 253, 0.5);
+}
+
+.toast-close {
+    background: transparent;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 0.25rem 0.4rem;
+    font-size: 1.1rem;
+    line-height: 1;
+    min-height: 36px;
+    min-width: 32px;
+}
+
+.toast-close:hover { color: #f3f4f6; background: transparent; }
+
+@keyframes toast-in {
+    0%   { opacity: 0; transform: translateY(12px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes toast-out {
+    0%   { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(8px); }
+}
+
+/* ---------- 스크린리더 전용 ---------- */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ---------- 반응형 ---------- */
+
+/* 태블릿 (≤ 900px) — 사이드바를 위로 */
+@media (max-width: 900px) {
+    body {
+        padding: 1.5rem 1rem;
+    }
+
+    .app {
+        padding: 1.5rem;
+    }
+
+    .layout {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .sidebar {
+        position: static;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .progress-section {
+        flex: 1 1 280px;
+    }
+
+    .filter-section {
+        flex: 1 1 280px;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .filter-button {
+        flex: 1 1 calc(50% - 0.25rem);
+    }
+}
+
+/* 모바일 (≤ 480px) */
+@media (max-width: 480px) {
+    body {
+        padding: 1rem 0.5rem;
+    }
+
+    .app {
+        padding: 1rem;
+        border-radius: 12px;
+    }
+
+    .app-header h1 {
+        font-size: 1.35rem;
+    }
+
+    .input-section input[type="text"],
+    .input-form input[type="text"] {
+        flex: 1 1 100%;
+        min-width: 0;
+    }
+
+    .input-section select,
+    .input-form select,
+    .input-section #add-button,
+    .input-form #add-button {
+        flex: 1;
+    }
+
+    .filter-button {
+        flex: 1 1 100%;
+    }
+
+    .todo-item {
+        flex-wrap: wrap;
+    }
+
+    .todo-text {
+        flex: 1 1 100%;
+        order: 10;
+    }
+
+    /* 모바일 터치 타겟 (UX #6): WCAG 2.5.5 / Apple HIG 44pt 최소 권장 */
+    .edit-button,
+    .delete-button {
+        min-height: 44px;
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .todo-item input[type="checkbox"] {
+        width: 26px;
+        height: 26px;
+    }
+
+    .toast {
+        min-width: 0;
+        width: calc(100vw - 2rem);
+    }
+}
